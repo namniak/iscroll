@@ -244,10 +244,13 @@ Indicator.prototype = {
 
 		if ( this.options.listenX && !this.options.listenY ) {
 			this.indicatorStyle.display = this.scroller.hasHorizontalScroll ? 'block' : 'none';
+			this.wrapper.style.display = this.scroller.hasHorizontalScroll ? 'block' : 'none';
 		} else if ( this.options.listenY && !this.options.listenX ) {
 			this.indicatorStyle.display = this.scroller.hasVerticalScroll ? 'block' : 'none';
+			this.wrapper.style.display = this.scroller.hasVerticalScroll ? 'block' : 'none';
 		} else {
 			this.indicatorStyle.display = this.scroller.hasHorizontalScroll || this.scroller.hasVerticalScroll ? 'block' : 'none';
+			this.wrapper.style.display = this.scroller.hasHorizontalScroll || this.scroller.hasVerticalScroll ? 'block' : 'none';
 		}
 
 		if ( this.scroller.hasHorizontalScroll && this.scroller.hasVerticalScroll ) {
