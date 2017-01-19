@@ -430,13 +430,15 @@ IScroll.prototype = {
 	},
 
 	_move: function (e) {
-		if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
-			return;
-		}
+		// if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
+		// 	return;
+		// }
 
-		if ( this.options.preventDefault ) {	// increases performance on Android? TODO: check!
-			e.preventDefault();
-		}
+		console.log(this.enabled, utils.eventType[e.type], this.initiated)
+
+		// if ( this.options.preventDefault ) {	// increases performance on Android? TODO: check!
+		// 	e.preventDefault();
+		// }
 
 		var point		= e.touches ? e.touches[0] : e,
 			deltaX		= point.pageX - this.pointX,
@@ -444,6 +446,8 @@ IScroll.prototype = {
 			timestamp	= utils.getTime(),
 			newX, newY,
 			absDistX, absDistY;
+
+			//console.log(point, deltaY)
 
 		this.pointX		= point.pageX;
 		this.pointY		= point.pageY;
@@ -533,13 +537,13 @@ IScroll.prototype = {
 	},
 
 	_end: function (e) {
-		if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
-			return;
-		}
+		// if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
+		// 	return;
+		// }
 
-		if ( this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
-			e.preventDefault();
-		}
+		// if ( this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
+		// 	e.preventDefault();
+		// }
 
 		var point = e.changedTouches ? e.changedTouches[0] : e,
 			momentumX,
