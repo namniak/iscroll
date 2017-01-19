@@ -391,7 +391,7 @@ IScroll.prototype = {
 		}
 
 		if ( this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
-			e.preventDefault();
+			//e.preventDefault();
 		}
 
 		var point = e.touches ? e.touches[0] : e,
@@ -436,9 +436,9 @@ IScroll.prototype = {
 
 		console.log(this.enabled, utils.eventType[e.type], this.initiated)
 
-		// if ( this.options.preventDefault ) {	// increases performance on Android? TODO: check!
-		// 	e.preventDefault();
-		// }
+		if ( this.options.preventDefault ) {	// increases performance on Android? TODO: check!
+			e.preventDefault();
+		}
 
 		var point		= e.touches ? e.touches[0] : e,
 			deltaX		= point.pageX - this.pointX,
@@ -537,13 +537,13 @@ IScroll.prototype = {
 	},
 
 	_end: function (e) {
-		// if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
-		// 	return;
-		// }
+		if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
+			return;
+		}
 
-		// if ( this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
-		// 	e.preventDefault();
-		// }
+		if ( this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
+			e.preventDefault();
+		}
 
 		var point = e.changedTouches ? e.changedTouches[0] : e,
 			momentumX,
@@ -1738,7 +1738,7 @@ Indicator.prototype = {
 	_start: function (e) {
 		var point = e.touches ? e.touches[0] : e;
 
-		e.preventDefault();
+		//e.preventDefault();
 		e.stopPropagation();
 
 		this.transitionTime();
